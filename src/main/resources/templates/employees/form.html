@@ -1,0 +1,35 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+          crossorigin="anonymous"/>
+</head>
+<body>
+
+<div class="container">
+
+    <a th:href="@{/employees}" class="btn btn-primary">Back</a>
+
+    <form th:object="${employeeForm}"
+          th:action="*{id == 0} ? @{/employees} :  @{|/employees/*{id}|}"
+          th:method="post">
+
+        <div class="form-group" th:classappend="${#fields.hasErrors('name')} ? 'has-error has-feedback'">
+            <label class="control-label">Name</label>
+            <input class="form-control" type="text" th:field="*{name}"/>
+            <span class="help-block" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+        </div>
+        <div class="form-group" th:classappend="${#fields.hasErrors('email')} ? 'has-error has-feedback'">
+            <label class="control-label">Email</label>
+            <input class="form-control" type="text" th:field="*{email}"/>
+            <span class="help-block" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+        </div>
+
+        <input type="submit" th:value="*{id == 0} ? 'Create' : 'Update'" class="btn btn-primary"/>
+    </form>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,11 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/sample
+    driverClassName: org.postgresql.Driver
+    username: postgres
+    password:
+  thymeleaf:
+    cache: false
+
+doma:
+  dialect: postgres
