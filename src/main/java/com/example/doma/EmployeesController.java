@@ -66,4 +66,11 @@ public class EmployeesController {
         return "redirect:/employees";
     }
 
+    @DeleteMapping("{id:[\\d]+}")
+    public String destroy(@PathVariable("id") int id) {
+        Employee employee = dao.findById(id);
+        dao.delete(employee);
+        return "redirect:/employees";
+    }
+
 }

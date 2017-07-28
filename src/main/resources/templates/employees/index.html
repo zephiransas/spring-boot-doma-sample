@@ -17,6 +17,7 @@
             <th>ID</th>
             <th>Name</th>
             <th>EMail</th>
+            <th>Action</th>
         </tr>
         </thead>
         <tr th:each="employee : ${employees}">
@@ -27,6 +28,11 @@
                 </a>
             </td>
             <td>[[${employee.email.value}]]</td>
+            <td>
+                <form th:action="@{|employees/${employee.id}|}" th:method="delete">
+                    <input type="submit" value="Delete" class="btn btn-danger"/>
+                </form>
+            </td>
         </tr>
     </table>
 </div>
